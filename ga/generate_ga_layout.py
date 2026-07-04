@@ -1,6 +1,11 @@
+"""Bake a fixed example GA layout + fake .place file, used to render the
+GA-vs-RL layout comparison figure in the paper."""
+
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.layout.baker import bake_layout
 
@@ -11,6 +16,9 @@ width = 16
 height = 16
 aspect_ratio = 1.0
 
+out_dir = PROJECT_ROOT / "visualizations"
+out_dir.mkdir(parents=True, exist_ok=True)
+
 # 1. Bake Architecture XML
 bake_layout(
     benchmark_name="custom_macbuf",
@@ -18,7 +26,7 @@ bake_layout(
     mems=brams,
     width=width,
     height=height,
-    output_path="visualizations/ga_custom_macbuf.xml",
+    output_path=str(out_dir / "ga_custom_macbuf.xml"),
     aspect_ratio=aspect_ratio,
 )
 
@@ -36,5 +44,5 @@ for i, (x, y) in enumerate(dsps):
 for i, (x, y) in enumerate(brams):
     place_content += f"bram_{i}\t{x}\t{y}\t0\t0\t#{i + len(dsps)}\n"
 
-Path("visualizations/ga_custom_macbuf.place").write_text(place_content)
-print("Created ga_custom_macbuf.place")
+(out_dir / "ga_custom_macbuf.place").write_text(place_content)
+print(f"Created {out_dir / 'ga_custom_macbuf.place'}")

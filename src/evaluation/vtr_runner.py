@@ -14,17 +14,15 @@ from src.utils.config import VTRPaths
 @dataclass
 class VTRMetrics:
     delay_ns: float = float("inf")
-    wirelength: float = float("inf")
     power_w: float = float("inf")
     routing_area: float = float("inf")
 
     def is_complete(self) -> bool:
-        return all(v != float("inf") for v in (self.delay_ns, self.wirelength, self.power_w, self.routing_area))
+        return all(v != float("inf") for v in (self.delay_ns, self.power_w, self.routing_area))
 
     def to_dict(self) -> dict:
         return {
             "delay_ns": self.delay_ns,
-            "wirelength": self.wirelength,
             "power_w": self.power_w,
             "routing_area": self.routing_area,
         }
@@ -117,14 +115,6 @@ class VTRRunner:
 
         if vpr_out.exists():
             content = vpr_out.read_text(errors="ignore")
-            wl_match = re.search(
-                r"Wire length results.*?Total wirelength:\s+([0-9]+),",
-                content,
-                re.DOTALL,
-            )
-            if wl_match:
-                m.wirelength = float(wl_match.group(1))
-
             area_match = re.search(r"Total routing area:\s+([0-9\.\+eE\-]+)", content)
             if area_match:
                 m.routing_area = float(area_match.group(1))

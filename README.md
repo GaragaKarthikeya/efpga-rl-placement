@@ -58,7 +58,7 @@ python3 run_traditional_flow.py --benchmark diffeq1 --no-power
 ## Architecture
 
 ### High-level workflow
-1. **Baseline generation**: `run_traditional_flow.py` runs VTR synthesis/placement/routing on the default architecture, extracts delay/power/wirelength/routing-area metrics
+1. **Baseline generation**: `run_traditional_flow.py` runs VTR synthesis/placement/routing on the default architecture, extracts delay/power/routing-area metrics
 2. **RL training**: `train.py` creates parallel `FPGAEnv` instances, trains `CustomMaskablePPO` to place DSP/BRAM blocks on custom-generated architectures
 3. **Evaluation**: Each episode runs the VTR flow on the agent-generated architecture XML via `vtr_runner.py`; results cached in SQLite
 
@@ -69,7 +69,7 @@ python3 run_traditional_flow.py --benchmark diffeq1 --no-power
 - `cache.py`: `LayoutCache` (SQLite wrapper for VTR results), `CacheRow` (metrics struct)
 
 **`src/evaluation/`**
-- `vtr_runner.py`: `VTRRunner` (runs VTR flow subprocess), `VTRMetrics` (delay/wirelength/power/routing-area), `VTRResources` (FPGA size and requirements)
+- `vtr_runner.py`: `VTRRunner` (runs VTR flow subprocess), `VTRMetrics` (delay/power/routing-area), `VTRResources` (FPGA size and requirements)
 
 **`src/env/`**
 - `fpga_env.py`: `FPGAEnv` — Gymnasium environment for heterogeneous block placement
@@ -91,11 +91,10 @@ Negative log-ratio against the VTR baseline:
 reward = -(
     ar_weight * log(routing_area / baseline_area) +
     dl_weight * log(delay / baseline_delay) +
-    pw_weight * log(power / baseline_power) +
-    wl_weight * log(wirelength / baseline_wirelength)
+    pw_weight * log(power / baseline_power)
 )
 ```
-Default weights: `ar=0.33, dl=0.33, pw=0.34, wl=0.00` (no wirelength in reward).
+Default weights: `ar=0.33, dl=0.33, pw=0.34`.
 
 ### Adding a new benchmark
 1. Place a Verilog file in `benchmarks/{name}.v`

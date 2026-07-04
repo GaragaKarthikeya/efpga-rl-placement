@@ -36,7 +36,6 @@ def parse_args() -> TrainConfig:
     p.add_argument("--ar_weight",    type=float, default=1.0,   help="Routing-area reward weight")
     p.add_argument("--dl_weight",    type=float, default=1.0,   help="Delay reward weight")
     p.add_argument("--pw_weight",    type=float, default=1.0,   help="Power reward weight")
-    p.add_argument("--wl_weight",    type=float, default=0.0,   help="Wirelength reward weight")
     p.add_argument("--save_path",    default=None,              help="Save trained model (.zip)")
     p.add_argument("--load_path",    default=None,              help="Load existing model (.zip)")
     p.add_argument("--log_suffix",   default="",                help="Suffix for output log files")
@@ -63,7 +62,6 @@ def parse_args() -> TrainConfig:
         n_epochs=args.n_epochs,
         seed=args.seed,
         max_episodes=args.max_episodes,
-        wl_weight=args.wl_weight,
         pw_weight=args.pw_weight,
         dl_weight=args.dl_weight,
         ar_weight=args.ar_weight,

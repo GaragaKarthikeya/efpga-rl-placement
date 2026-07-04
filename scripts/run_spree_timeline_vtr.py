@@ -10,7 +10,15 @@ episode (src/env/fpga_env.py:_evaluate_layout), with one difference: results
 are kept in runs/spree_timeline/milestone_{i:02d}/ instead of a temp dir, so
 the figure script can read the real .place + baked arch XML afterward.
 
-Usage: /home/digital-2/.venv/bin/python3 scripts/run_spree_timeline_vtr.py
+Prerequisite: this reads all_layouts_multi_seed_123_multi11_long_seed123.jsonl
+(the raw per-episode training log from the spree/seed-123 run used in the
+paper), which is a generated training artifact and is NOT checked into this
+repo. Regenerate it first with a matching training run, e.g.:
+
+    python3 train.py --benchmarks spree,fifo,ch_intrinsics,boundtop,mmc_core,diffeq1,diffeq2,raygentop,mkSMAdapter4B,or1200,mkPktMerge \
+        --seed 123 --log_suffix multi11_long_seed123
+
+Usage: python3 scripts/run_spree_timeline_vtr.py
 """
 import json
 import math

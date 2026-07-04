@@ -83,7 +83,6 @@ class BestLayoutCallback(BaseCallback):
                     "dsps": _to_py(info.get("placed_dsps", [])),
                     "brams": _to_py(info.get("placed_brams", [])),
                     "reward": ep_rew,
-                    "wirelength": float(info.get("wirelength", float("inf"))),
                     "delay_ns": float(info.get("delay_ns", float("inf"))),
                     "power_w": float(info.get("power_w", float("inf"))),
                     "routing_area": float(info.get("routing_area")) if info.get("routing_area") not in ("?", None) else float("inf"),
@@ -167,7 +166,6 @@ class BestLayoutCallback(BaseCallback):
         print("\n" + "=" * 50)
         print(f"[NEW BEST — {bname} — SEED {self.seed_val}]")
         print(f"  Reward       : {reward:.5f}")
-        print(f"  Wirelength   : {info.get('wirelength')}")
         print(f"  Delay (ns)   : {info.get('delay_ns')}")
         print(f"  Power (W)    : {info.get('power_w')}")
         print(f"  Grid         : {info.get('grid_W')}x{info.get('grid_H')}")
@@ -227,7 +225,6 @@ class BestLayoutCallback(BaseCallback):
             bi = self.best_info[bname]
             print(f"  [{bname}] best reward: {reward:.5f}")
             for metric, label, key in [
-                ("wirelength", "Wirelength", "wirelength"),
                 ("delay_ns",   "Delay (ns)", "delay_ns"),
                 ("power_w",    "Power (W)",  "power_w"),
             ]:
@@ -242,7 +239,7 @@ class BestLayoutCallback(BaseCallback):
             return
         tm = self._configs_by_name[bname].traditional_metrics
         log_dict = {f"best_reward/{bname}": reward}
-        for metric, key in [("wirelength", "wirelength"), ("delay_ns", "delay_ns"), ("power_w", "power_w")]:
+        for metric, key in [("delay_ns", "delay_ns"), ("power_w", "power_w")]:
             val = info.get(metric)
             base_val = tm.get(key)
             if val is not None and base_val:
@@ -286,7 +283,6 @@ class BestLayoutCallback(BaseCallback):
                 json.dumps(
                     {
                         "reward": self.best_reward[bname],
-                        "wirelength": info.get("wirelength"),
                         "delay_ns": info.get("delay_ns"),
                         "power_w": info.get("power_w"),
                         "routing_area": info.get("routing_area"),

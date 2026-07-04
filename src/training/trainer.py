@@ -37,7 +37,6 @@ class TrainConfig:
     ar_weight: float = 1.0
     dl_weight: float = 1.0
     pw_weight: float = 1.0
-    wl_weight: float = 0.0
     save_path: Optional[str] = None
     load_path: Optional[str] = None
     log_suffix: str = ""
@@ -87,10 +86,9 @@ def train(cfg: TrainConfig) -> None:
     for c in configs:
         print(
             f"  {c.name:<16} grid={c.width}x{c.height}  dsp={c.req_dsp} bram={c.req_bram}  "
-            f"baseline wl={c.traditional_metrics.get('wirelength')} "
-            f"dl={c.traditional_metrics.get('delay_ns')} pw={c.traditional_metrics.get('power_w')}"
+            f"baseline dl={c.traditional_metrics.get('delay_ns')} pw={c.traditional_metrics.get('power_w')}"
         )
-    print(f"Reward weights     : wl={cfg.wl_weight} pw={cfg.pw_weight} dl={cfg.dl_weight} ar={cfg.ar_weight}")
+    print(f"Reward weights     : pw={cfg.pw_weight} dl={cfg.dl_weight} ar={cfg.ar_weight}")
     print("=" * 60)
 
     n_envs = cfg.n_envs or min(8, os.cpu_count() or 1)
@@ -124,7 +122,6 @@ def train(cfg: TrainConfig) -> None:
         "max_height": max_height,
         "max_nodes": max_nodes,
         "max_edges": max_edges,
-        "wl_weight": cfg.wl_weight,
         "pw_weight": cfg.pw_weight,
         "dl_weight": cfg.dl_weight,
         "ar_weight": cfg.ar_weight,

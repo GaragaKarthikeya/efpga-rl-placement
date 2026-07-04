@@ -9,7 +9,6 @@ from typing import Optional
 @dataclass
 class CacheRow:
     delay_ns: float
-    wirelength: float
     power_w: float
     routing_area: float
     grid_w: int
@@ -21,7 +20,6 @@ _CREATE_SQL = """
     CREATE TABLE IF NOT EXISTS layout_cache (
         cache_key   TEXT PRIMARY KEY,
         delay_ns    REAL,
-        wirelength  REAL,
         power_w     REAL,
         routing_area REAL DEFAULT 0,
         grid_w      REAL DEFAULT 0,
@@ -61,16 +59,15 @@ class LayoutCache:
         try:
             with self._connect() as conn:
                 row = conn.execute(
-                    "SELECT delay_ns, wirelength, power_w, success, grid_w, grid_h, routing_area"
+                    "SELECT delay_ns, power_w, success, grid_w, grid_h, routing_area"
                     " FROM layout_cache WHERE cache_key=?",
                     (key,),
                 ).fetchone()
             if row is None:
                 return None
-            delay_ns, wirelength, power_w, success, grid_w, grid_h, routing_area = row
+            delay_ns, power_w, success, grid_w, grid_h, routing_area = row
             return CacheRow(
                 delay_ns=delay_ns,
-                wirelength=wirelength,
                 power_w=power_w,
                 routing_area=routing_area or 0.0,
                 grid_w=int(grid_w or 0),
@@ -84,11 +81,10 @@ class LayoutCache:
         try:
             with self._connect() as conn:
                 conn.execute(
-                    "INSERT OR REPLACE INTO layout_cache VALUES (?,?,?,?,?,?,?,?)",
+                    "INSERT OR REPLACE INTO layout_cache VALUES (?,?,?,?,?,?,?)",
                     (
                         key,
                         row.delay_ns,
-                        row.wirelength,
                         row.power_w,
                         row.routing_area,
                         row.grid_w,
@@ -103,7 +99,6 @@ class LayoutCache:
     def failure_row() -> CacheRow:
         return CacheRow(
             delay_ns=float("inf"),
-            wirelength=float("inf"),
             power_w=float("inf"),
             routing_area=float("inf"),
             grid_w=0,

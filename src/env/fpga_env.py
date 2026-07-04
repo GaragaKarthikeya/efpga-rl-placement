@@ -204,7 +204,6 @@ class FPGAEnv(gym.Env):
         max_height: int,
         max_nodes: int,
         max_edges: int,
-        wl_weight: float = 0.10,
         pw_weight: float = 0.30,
         dl_weight: float = 0.60,
         ar_weight: float = 0.00,
@@ -231,8 +230,8 @@ class FPGAEnv(gym.Env):
         }
         self._vtr = VTRRunner(VTRPaths())
 
-        self.wl_weight, self.pw_weight, self.dl_weight, self.ar_weight = (
-            wl_weight, pw_weight, dl_weight, ar_weight,
+        self.pw_weight, self.dl_weight, self.ar_weight = (
+            pw_weight, dl_weight, ar_weight,
         )
 
         self.action_space = spaces.Discrete(max_width * max_height)
@@ -381,20 +380,18 @@ class FPGAEnv(gym.Env):
     # Reward
     # ------------------------------------------------------------------
 
-    def _compute_reward(self, wl: float, pw: float, dl: float, routing_area: float) -> float:
+    def _compute_reward(self, pw: float, dl: float, routing_area: float) -> float:
         """Weighted log-ratio reward. Positive = better than baseline."""
         tm = self._active_config.traditional_metrics
         area_norm = max(routing_area, 1e-9) / max(tm.get("routing_area", 1.0), 1e-9)
         delay_norm = max(dl, 1e-9) / max(tm["delay_ns"], 1e-9)
         power_norm = max(pw, 1e-9) / max(tm["power_w"], 1e-9)
-        wl_norm = max(wl, 1e-9) / max(tm.get("wirelength", 1.0), 1e-9)
 
         return float(
             -(
                 self.ar_weight * np.log(area_norm)
                 + self.dl_weight * np.log(delay_norm)
                 + self.pw_weight * np.log(power_norm)
-                + self.wl_weight * np.log(wl_norm)
             )
         )
 
@@ -414,7 +411,7 @@ class FPGAEnv(gym.Env):
             info["success"] = cached.success
             if cached.success:
                 self._fill_success_info(info, cached)
-                return self._compute_reward(cached.wirelength, cached.power_w, cached.delay_ns, cached.routing_area), info
+                return self._compute_reward(cached.power_w, cached.delay_ns, cached.routing_area), info
             return -10.0, info
 
         worker = uuid.uuid4().hex[:8]
@@ -471,7 +468,6 @@ class FPGAEnv(gym.Env):
                 grid_h = resources.fpga_size[1] + 2
                 row = CacheRow(
                     delay_ns=metrics.delay_ns,
-                    wirelength=metrics.wirelength,
                     power_w=metrics.power_w,
                     routing_area=metrics.routing_area,
                     grid_w=grid_w,
@@ -481,7 +477,7 @@ class FPGAEnv(gym.Env):
                 cache.put(cache_key, row)
                 self._fill_success_info(info, row)
                 self._cleanup(temp_arch, temp_run_dir, temp_constraints)
-                return self._compute_reward(metrics.wirelength, metrics.power_w, metrics.delay_ns, metrics.routing_area), info
+                return self._compute_reward(metrics.power_w, metrics.delay_ns, metrics.routing_area), info
 
         cache.put(cache_key, LayoutCache.failure_row())
         info["error"] = f"VTR failed (rc={rc})"
@@ -571,7 +567,6 @@ class FPGAEnv(gym.Env):
             {
                 "success": True,
                 "delay_ns": row.delay_ns,
-                "wirelength": row.wirelength,
                 "power_w": row.power_w,
                 "routing_area": row.routing_area if row.routing_area > 0 else "?",
                 "grid_W": row.grid_w if row.grid_w > 0 else "?",
@@ -587,7 +582,6 @@ class FPGAEnv(gym.Env):
             "placed_dsps": list(self._placed_dsps),
             "placed_brams": list(self._placed_brams),
             "success": success,
-            "wirelength": float("inf"),
             "delay_ns": float("inf"),
             "power_w": float("inf"),
             "routing_area": float("inf"),
@@ -599,7 +593,6 @@ class FPGAEnv(gym.Env):
             "placed_dsps": [],
             "placed_brams": [],
             "success": False,
-            "wirelength": float("inf"),
             "delay_ns": float("inf"),
             "power_w": float("inf"),
             "routing_area": float("inf"),

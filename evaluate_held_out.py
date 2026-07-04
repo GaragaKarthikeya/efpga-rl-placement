@@ -87,7 +87,6 @@ def main() -> None:
             "reward": info.get("reward"),
             "success": info.get("success"),
             "status": info.get("status"),
-            "wirelength": info.get("wirelength"),
             "delay_ns": info.get("delay_ns"),
             "power_w": info.get("power_w"),
             "routing_area": info.get("routing_area"),
