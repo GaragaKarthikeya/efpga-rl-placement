@@ -112,10 +112,22 @@ benchmarks/, baselines/    Verilog designs and their traditional-flow baselines
    (`LayoutCache`), keyed by `(dsp_coords, bram_coords, aspect_ratio)`.
 
 ### `FPGAEnv` (`src/env/fpga_env.py`)
-- Observation: `Box(MAX_WIDTH, MAX_HEIGHT, 4)` — occupancy grid, block-type
-  hint, aspect-ratio channel, plus a fourth channel; canvas dimensions are
-  fixed per training run from a benchmark universe (see
-  `compute_max_dims()`/`build_benchmark_configs()`).
+- Observation: `Dict` space —
+  - `grid`: `Box(MAX_WIDTH, MAX_HEIGHT, 4)`, the occupancy/placement canvas
+  - `node_features`: `Box(MAX_NODES, 4)`, per-node features of the
+    benchmark's reduced netlist graph
+  - `edge_index`: `Box(MAX_EDGES, 2)`, `edge_weight`: `Box(MAX_EDGES,)` —
+    the reduced graph's connectivity, consumed by a GNN feature extractor
+    (`src/training/gnn_extractor.py`, referenced by `train.py` and the
+    evaluation scripts but not itself documented here)
+  - `current_block_idx`: `Box(1,)`, the graph node id of the block being
+    placed this step
+  - `valid_wh`: `Box(2,)`, the active benchmark's width/height normalized
+    against the shared canvas
+  - `MAX_WIDTH`/`MAX_HEIGHT`/`MAX_NODES`/`MAX_EDGES` are fixed per training
+    run from a benchmark universe (see `compute_max_dims()` /
+    `build_benchmark_configs()`), which is why zero-shot evaluation must
+    pass the same `--universe_benchmarks` used at training time.
 - Action space: `Discrete(MAX_WIDTH * MAX_HEIGHT)`; action 0 selects the
   aspect ratio, subsequent actions place DSPs then BRAMs.
 - Episode: select aspect ratio -> place all DSPs -> place all BRAMs -> VTR
@@ -160,6 +172,10 @@ reward = -(
   per-update diagnostics (batch_reward_variance, gradient_variance_norm,
   avg_cosine_similarity, global_grad_norm, policy_entropy, value_loss,
   explained_variance)
+- `gnn_extractor.py`: `GNNFeaturesExtractor` — SB3 features extractor
+  combining a CNN over `grid` with a graph-convolution encoder over
+  `node_features`/`edge_index`/`edge_weight`, used as the PPO policy's
+  `features_extractor_class`
 - `trainer.py`: `TrainConfig` (dataclass of all hyperparameters), `train()`
   (builds envs, runs PPO, attaches callbacks, optional W&B logging)
 - `callbacks.py`: `BestLayoutCallback` and related callbacks — track
