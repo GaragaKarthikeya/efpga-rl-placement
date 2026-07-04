@@ -1,0 +1,10 @@
+numpy
+gymnasium
+stable-baselines3
+sb3-contrib
+torch
+jinja2
+wandb
+matplotlib
+pandas
+seaborn

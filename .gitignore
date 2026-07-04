@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+
+# Environment secrets
+.env
+
+# ── Training outputs (written to PROJECT_ROOT by callbacks) ───────────────────
+all_layouts_*.jsonl
+layouts_*.json
+best_baked_layout_*.xml
+best_layout_coordinates_*.txt
+best_layout_constraints_*.xml
+
+# ── Generated netlist data (produced by extract_netlist_info.py) ──────────────
+*_netlist_info.json
+*_netlist_graph.json
+
+# ── VTR / VPR run artifacts ───────────────────────────────────────────────────
+runs/
+temp_arch_*.xml
+temp_constraints_*.xml
+
+# VPR output files that can leak to root
+vpr_stdout.log
+vpr.pdf
+*.rpt
+chanx_occupancy.txt
+chany_occupancy.txt
+*.net
+*.net.post_routing
+*.place
+*.route
+*.power
+packing_pin_util.rpt
+
+
+# ── IDE / OS ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store

@@ -1,0 +1,109 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{golds,nsgaii}
+\citation{golds}
+\citation{golds}
+\citation{nsgaii}
+\citation{rlplace,vprgym}
+\citation{alice,arianna}
+\citation{golds}
+\citation{shell}
+\citation{nuredact}
+\citation{golds}
+\citation{nsgaii}
+\@writefile{toc}{\contentsline {section}{Abstract}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{alphachip}
+\citation{maskplace}
+\citation{deeppr}
+\citation{chipformer}
+\citation{rlplace}
+\citation{vprgym}
+\citation{fasttuner}
+\citation{transplace}
+\citation{vtr9}
+\citation{parmys}
+\citation{vpr97}
+\citation{maskableppo}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background and Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Background and Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Per-Design eFPGA Layout}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Learned Policies for Physical Design}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}VTR/VPR Background}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Formulation}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:problem}{{3.1}{2}{Problem Formulation}{subsection.3.1}{}}
+\newlabel{eq:policy}{{1}{2}{Problem Formulation}{equation.3.1}{}}
+\newlabel{eq:adp}{{2}{2}{Problem Formulation}{equation.3.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}RL Formulation}{2}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:rl}{{3.2}{2}{RL Formulation}{subsection.3.2}{}}
+\citation{gamora}
+\citation{vtr8}
+\citation{koios}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces System overview of the RL-based fabric layout search. The left panel encodes the input netlist and grid. The center panel rolls out the placement sequentially, positioning one H-block per step under action masking. The right panel uses Jinja2 to render the final placement into a VTR architecture XML for verification and reward computation.}}{3}{figure.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:architecture}{{1}{3}{System overview of the RL-based fabric layout search. The left panel encodes the input netlist and grid. The center panel rolls out the placement sequentially, positioning one H-block per step under action masking. The right panel uses Jinja2 to render the final placement into a VTR architecture XML for verification and reward computation}{figure.caption.5}{}}
+\newlabel{eq:reward}{{3}{3}{RL Formulation}{equation.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Multi-Modal Feature Extractor}{3}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:gnn}{{3.3}{3}{Multi-Modal Feature Extractor}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Training Setup}{3}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:training}{{3.4}{3}{Training Setup}{subsection.3.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup}{3}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{4}{3}{Experimental Setup}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Evaluation Oracle}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:oracle}{{4.1}{3}{Evaluation Oracle}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Benchmark Circuits}{3}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:benchmarks}{{4.2}{3}{Benchmark Circuits}{subsection.4.2}{}}
+\citation{golds}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Per-seed ADP reduction for all 17 benchmark circuits (11 in-pool, 6 held-out zero-shot).}}{4}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:seedvar}{{2}{4}{Per-seed ADP reduction for all 17 benchmark circuits (11 in-pool, 6 held-out zero-shot)}{figure.caption.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{4}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{4}{Results}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}In-Pool Performance}{4}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:results-inpool}{{5.1}{4}{In-Pool Performance}{subsection.5.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces GA average ADP reduction (\%) and average VTR calls across three seeds (7, 42, 123), vs.\ zero-shot policy average ADP reduction (\%) over the same seeds, held-out benchmark circuits.}}{4}{table.caption.7}\protected@file@percent }
+\newlabel{tab:ga-vs-zeroshot}{{1}{4}{GA average ADP reduction (\%) and average VTR calls across three seeds (7, 42, 123), vs.\ zero-shot policy average ADP reduction (\%) over the same seeds, held-out benchmark circuits}{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Zero-Shot Generalization}{4}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:results-zeroshot}{{5.2}{4}{Zero-Shot Generalization}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}GA Comparison}{4}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:results-ga}{{5.3}{4}{GA Comparison}{subsection.5.3}{}}
+\bibstyle{ACM-Reference-Format}
+\bibdata{references}
+\bibcite{koios}{{1}{2021}{{Arora et~al\mbox  {.}}}{{}}}
+\bibcite{vpr97}{{2}{1997}{{Betz and Rose}}{{}}}
+\bibcite{nsgaii}{{3}{2025}{{Bhargav et~al\mbox  {.}}}{{}}}
+\bibcite{vprgym}{{4}{2023}{{Chen et~al\mbox  {.}}}{{}}}
+\bibcite{deeppr}{{5}{2021}{{Cheng and Yan}}{{}}}
+\bibcite{arianna}{{6}{2025}{{Collini et~al\mbox  {.}}}{{}}}
+\bibcite{parmys}{{7}{2022}{{Damghani and Kent}}{{}}}
+\bibcite{nuredact}{{8}{2026}{{Das et~al\mbox  {.}}}{{}}}
+\bibcite{vtr9}{{9}{2025}{{Elgammal et~al\mbox  {.}}}{{}}}
+\bibcite{rlplace}{{10}{2022}{{Elgammal et~al\mbox  {.}}}{{}}}
+\bibcite{transplace}{{11}{2025}{{Hou et~al\mbox  {.}}}{{}}}
+\bibcite{fasttuner}{{12}{2024}{{Hsiao et~al\mbox  {.}}}{{}}}
+\bibcite{maskableppo}{{13}{2022}{{Huang and Onta{\~{n}}{\'{o}}n}}{{}}}
+\bibcite{shell}{{14}{2023}{{Kamali et~al\mbox  {.}}}{{}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The training progression for \texttt  {spree} (seed 123). Arrows trace every episode that set a new best-so-far ADP reduction, left to right across the top row and then right to left across the bottom row. Each panel is a real VPR placement: saturated tiles are occupied, pale tiles are provisioned but unused. Early episodes, still close to random exploration, overshoot badly in both fabric size and ADP. Later episodes converge on a compact, exactly-sized fabric (bottom left).}}{5}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:layout}{{3}{5}{The training progression for \texttt {spree} (seed 123). Arrows trace every episode that set a new best-so-far ADP reduction, left to right across the top row and then right to left across the bottom row. Each panel is a real VPR placement: saturated tiles are occupied, pale tiles are provisioned but unused. Early episodes, still close to random exploration, overshoot badly in both fabric size and ADP. Later episodes converge on a compact, exactly-sized fabric (bottom left)}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{5}{section.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{5}{Conclusion}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{References}{5}{section*.10}\protected@file@percent }
+\bibcite{chipformer}{{15}{2023}{{Lai et~al\mbox  {.}}}{{}}}
+\bibcite{maskplace}{{16}{2022}{{Lai et~al\mbox  {.}}}{{}}}
+\bibcite{alphachip}{{17}{2021}{{Mirhoseini et~al\mbox  {.}}}{{}}}
+\bibcite{vtr8}{{18}{2020}{{Murray et~al\mbox  {.}}}{{}}}
+\bibcite{golds}{{19}{2024}{{Nandi et~al\mbox  {.}}}{{}}}
+\bibcite{alice}{{20}{2022}{{Tomajoli et~al\mbox  {.}}}{{}}}
+\bibcite{gamora}{{21}{2023}{{Wu et~al\mbox  {.}}}{{}}}
+\newlabel{tocindent-1}{0pt}
+\newlabel{tocindent0}{0pt}
+\newlabel{tocindent1}{4.185pt}
+\newlabel{tocindent2}{10.34999pt}
+\newlabel{tocindent3}{0pt}
+\newlabel{tocindent4}{0pt}
+\newlabel{tocindent5}{0pt}
+\newlabel{TotPages}{{6}{6}{}{page.6}{}}
+\gdef \@abspage@last{6}

@@ -1,0 +1,18 @@
+{
+    "fpga_size": [
+        12,
+        12
+    ],
+    "requirements": {
+        "io": 265,
+        "clb": 40,
+        "dsp": 0,
+        "bram": 3
+    },
+    "limits": {
+        "io": 384,
+        "clb": 108,
+        "dsp": 3,
+        "bram": 4
+    }
+}

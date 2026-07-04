@@ -1,0 +1,236 @@
+% ============================================================
+% Foundational / baseline work
+% ============================================================
+@inproceedings{golds,
+  author    = {Nandi, Pratyush and Mishra, Anubhav and Rao, Madhav},
+  title     = {{GOLDS}: Genetic Algorithm-based Optimization of Custom {FPGA} Architecture Layout Design for Secure Silicon},
+  booktitle = {Proceedings of the 2024 Great Lakes Symposium on VLSI (GLSVLSI '24)},
+  year      = {2024},
+  address   = {Clearwater, FL, USA},
+  pages     = {92--97},
+  publisher = {ACM},
+  doi       = {10.1145/3649476.3658743}
+}
+
+@inproceedings{nsgaii,
+  author    = {Bhargav, D. V. and Pradyumna, G. and Rao, Madhav},
+  title     = {Meta-Heuristic Optimization of Custom Heterogeneous Blocks Defined {eFPGA} Design},
+  booktitle = {2025 38th International Conference on VLSI Design and 2024 23rd International Conference on Embedded Systems (VLSID)},
+  year      = {2025},
+  pages     = {326--331},
+  publisher = {IEEE},
+  doi       = {10.1109/VLSID64188.2025.00069}
+}
+
+% ============================================================
+% Learned policies for physical design
+% ============================================================
+@article{alphachip,
+  author    = {Mirhoseini, Azalia and Goldie, Anna and Yazgan, Mustafa and Jiang, Joe Wenjie and Songhori, Ebrahim and Wang, Shen and Lee, Young-Joon and Johnson, Eric and Pathak, Omkar and Nazi, Azade and Pak, Jiwoo and Tong, Andy and Srinivasa, Kavya and Hang, William and Tuncer, Emre and Le, Quoc V. and Laudon, James and Ho, Richard and Carpenter, Roger and Dean, Jeff},
+  title     = {A graph placement methodology for fast chip design},
+  journal   = {Nature},
+  volume    = {594},
+  number    = {7862},
+  pages     = {207--212},
+  year      = {2021},
+  doi       = {10.1038/s41586-021-03544-w}
+}
+
+@inproceedings{chipformer,
+  author    = {Lai, Yao and Liu, Jinxin and Tang, Zhentao and Wang, Bin and Hao, Jianye and Luo, Ping},
+  title     = {{ChiPFormer}: Transferable Chip Placement via Offline Decision Transformer},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {202},
+  pages     = {18346--18364},
+  publisher = {PMLR},
+  year      = {2023},
+  url       = {https://proceedings.mlr.press/v202/lai23c.html}
+}
+@inproceedings{maskplace,
+  author    = {Lai, Yao and Mu, Yao and Luo, Ping},
+  title     = {{MaskPlace}: Fast Chip Placement via Reinforced Visual Representation Learning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  pages     = {24019--24030},
+  year      = {2022},
+  url = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/97c8a8eb0e5231d107d0da51b79e09cb-Abstract-Conference.html}
+}
+
+@inproceedings{deeppr,
+  author    = {Cheng, Ruoyu and Yan, Junchi},
+  title     = {On Joint Learning for Solving Placement and Routing in Chip Design},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {34},
+  pages     = {16508--16519},
+  year      = {2021},
+  url       = {https://papers.nips.cc/paper/2021/hash/898aef0932f6aaecda27aba8e9903991-Abstract.html}
+}
+
+% ============================================================
+% Learned methods for FPGA placement (fixed-fabric)
+% ============================================================
+@article{rlplace,
+  author    = {Elgammal, Mohamed A. and Murray, Kevin E. and Betz, Vaughn},
+  title     = {{RLPlace}: Using Reinforcement Learning and Smart Perturbations to Optimize {FPGA} Placement},
+  journal   = {IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD)},
+  volume    = {41},
+  number    = {8},
+  pages     = {2532--2545},
+  year      = {2022},
+  doi       = {10.1109/TCAD.2021.3109863}
+}
+
+@inproceedings{vprgym,
+  author    = {Chen, Ruichen and Lu, Shengyao and Elgammal, Mohamed A. and Chun, Peter and Betz, Vaughn and Niu, Di},
+  title     = {{VPR-Gym}: A Platform for Exploring {AI} Techniques in {FPGA} Placement Optimization},
+  booktitle = {33rd International Conference on Field-Programmable Logic and Applications (FPL)},
+  year      = {2023},
+  pages     = {72--78},
+  publisher = {IEEE},
+  doi       = {10.1109/FPL60245.2023.00018}
+}
+
+% ============================================================
+% eFPGA-based IP redaction / logic locking
+% ============================================================
+@inproceedings{alice,
+  author    = {Tomajoli, Chiara Muscari and Collini, Luca and Bhandari, Jitendra and Moosa, Abdul Khader Thalakkattu and Tan, Benjamin and Tang, Xifan and Gaillardon, Pierre-Emmanuel and Karri, Ramesh and Pilato, Christian},
+  title     = {{ALICE}: An Automatic Design Flow for {eFPGA} Redaction},
+  booktitle = {59th ACM/IEEE Design Automation Conference (DAC)},
+  year      = {2022},
+  pages     = {781--786},
+  doi       = {10.1145/3489517.3530543}
+}
+@inproceedings{shell,
+  author    = {Kamali, Hadi M. and Azar, Kimia Z. and Farahmandi, Farimah and Tehranipoor, Mark},
+  title     = {{SheLL}: Shrinking {eFPGA} Fabrics for Logic Locking},
+  booktitle = {Design, Automation \& Test in Europe Conference (DATE)},
+  year      = {2023},
+  pages     = {1--6},
+  publisher = {IEEE},
+  url       = {https://ieeexplore.ieee.org/abstract/document/10137211}
+}
+
+@misc{nuredact,
+  author        = {Das, Voktho and Azar, Kimia Zamiri and Kamali, Hadi M.},
+  title         = {{NuRedact}: Non-Uniform {eFPGA} Architecture for Low-Overhead and Secure {IP} Redaction},
+  year          = {2026},
+  eprint        = {2601.11770},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AR},
+  url           = {https://arxiv.org/abs/2601.11770},
+  note          = {To appear in Design, Automation \& Test in Europe Conference (DATE) 2026}
+}
+
+% ============================================================
+% Amortized / transferable optimization in EDA
+% ============================================================
+@inproceedings{fasttuner,
+  author    = {Hsiao, Hao-Hsiang and Lu, Yi-Chen and Vanna-Iampikul, Pruek and Lim, Sung Kyu},
+  title     = {{FastTuner}: Transferable Physical Design Parameter Optimization using Fast Reinforcement Learning},
+  booktitle = {Proceedings of the 2024 International Symposium on Physical Design (ISPD)},
+  year      = {2024},
+  pages     = {93--101},
+  publisher = {ACM},
+  doi       = {10.1145/3626184.3633328}
+}
+
+@inproceedings{transplace,
+  author    = {Hou, Yunbo and Ye, Haoran and Yang, Shuwen and Zhang, Yingxue and Xu, Siyuan and Song, Guojie},
+  title     = {{TransPlace}: Transferable Circuit Global Placement via Graph Neural Network},
+  booktitle = {Proceedings of the 31st ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
+  year      = {2025},
+  publisher = {ACM},
+  doi       = {10.1145/3690624.3709185}
+}
+
+% ============================================================
+% GNN / graph representation learning for EDA
+% (NOTE: author lists below are INCOMPLETE — verify before camera-ready)
+% ============================================================
+@inproceedings{gamora,
+  author    = {Wu, Nan and Li, Yingjie and Hao, Cong and Dai, Steve and Yu, Cunxi and Xie, Yuan},
+  title     = {{Gamora}: Graph Learning based Symbolic Reasoning for Large-Scale Boolean Networks},
+  booktitle = {2023 60th ACM/IEEE Design Automation Conference (DAC)},
+  year      = {2023},
+  pages     = {1--6},
+  publisher = {IEEE},
+  doi       = {10.1109/DAC56929.2023.10247828}
+}
+% ============================================================
+% Toolchain and benchmarks
+% ============================================================
+@article{vtr9,
+  author    = {Elgammal, Mohamed A. and Mohaghegh, Amin and Shahrouz, Soheil G. and Mahmoudi, Fatemehsadat and Kosar, Fahrican and Talaei, Kimia and Fife, Joshua and Khadivi, Daniel and Murray, Kevin E. and Boutros, Andrew and Kent, Kenneth B. and Goeders, Jeffrey B. and Betz, Vaughn},
+  title     = {{VTR 9}: Open-Source {CAD} for Fabric and Beyond {FPGA} Architecture Exploration},
+  journal   = {ACM Transactions on Reconfigurable Technology and Systems (TRETS)},
+  volume    = {18},
+  number    = {3},
+  pages     = {39:1--39:53},
+  year      = {2025},
+  doi       = {10.1145/3734798}
+}
+
+@article{vtr8,
+  author    = {Murray, Kevin E. and Petelin, Oleg and Zhong, Sheng and Wang, Jia Min and Eldafrawy, Mohamed and Legault, Jean-Philippe and Sha, Eugene and Graham, Aaron G. and Wu, Jean and Walker, Matthew J. P. and Zeng, Hanqing and Patros, Panagiotis and Luu, Jason and Kent, Kenneth B. and Betz, Vaughn},
+  title     = {{VTR 8}: High-performance {CAD} and Customizable {FPGA} Architecture Modelling},
+  journal   = {ACM Transactions on Reconfigurable Technology and Systems (TRETS)},
+  volume    = {13},
+  number    = {2},
+  pages     = {9:1--9:55},
+  year      = {2020},
+  doi       = {10.1145/3388617}
+}
+
+@inproceedings{vpr97,
+  author    = {Betz, Vaughn and Rose, Jonathan},
+  title     = {{VPR}: A New Packing, Placement and Routing Tool for {FPGA} Research},
+  booktitle = {7th International Workshop on Field-Programmable Logic and Applications (FPL)},
+  year      = {1997},
+  pages     = {213--222},
+  publisher = {Springer-Verlag},
+  doi       = {10.1007/3-540-63465-7_226}
+}
+
+@inproceedings{koios,
+  author    = {Arora, Aman and Boutros, Andrew and Rauch, Daniel and Rajen, Aishwarya and Borda, Aatman and Damghani, Seyed A. and Mehta, Samidh and Kate, Sangram and Patel, Pragnesh and Kent, Kenneth B. and Betz, Vaughn and John, Lizy K.},
+  title     = {{Koios}: A Deep Learning Benchmark Suite for {FPGA} Architecture and {CAD} Research},
+  booktitle = {2021 31st International Conference on Field-Programmable Logic and Applications (FPL)},
+  year      = {2021},
+  pages     = {355--362},
+  publisher = {IEEE},
+  doi       = {10.1109/FPL53798.2021.00068}
+}
+% ============================================================
+% Added 2026-06 (verified by research agent)
+% ============================================================
+@article{arianna,
+  author    = {Collini, Luca and Bhandari, Jitendra and Tomajoli, Chiara Muscari and Moosa, Abdul Khader Thalakkattu and Tan, Benjamin and Tang, Xifan and Gaillardon, Pierre-Emmanuel and Karri, Ramesh and Pilato, Christian},
+  title     = {{ARIANNA}: An Automatic Design Flow for Fabric Customization and {eFPGA} Redaction},
+  journal   = {ACM Transactions on Design Automation of Electronic Systems (TODAES)},
+  volume    = {30},
+  number    = {4},
+  articleno = {63},
+  numpages  = {23},
+  year      = {2025},
+  doi       = {10.1145/3737287}
+}
+
+@inproceedings{maskableppo,
+  author    = {Huang, Shengyi and Onta{\~{n}}{\'{o}}n, Santiago},
+  title     = {A Closer Look at Invalid Action Masking in Policy Gradient Algorithms},
+  booktitle = {Proceedings of the 35th International FLAIRS Conference},
+  year      = {2022},
+  volume    = {35},
+  doi       = {10.32473/flairs.v35i.130584}
+}
+
+@inproceedings{parmys,
+  author  = {Damghani, Seyed Alireza and Kent, Kenneth B.},
+  title   = {{Yosys+Odin-II}: The {Odin-II} Partial Mapper with {Yosys} Coarse-grained Netlists in {VTR}},
+  booktitle = {Proceedings of the ACM/SIGDA International Symposium on Field-Programmable Gate Arrays (FPGA)},
+  year    = {2022},
+  pages   = {157},
+  doi     = {10.1145/3490422.3502344}
+}
